@@ -53,16 +53,18 @@ export function saveCourse(course) {
     .catch(handleError)
 }
 
-export function callUpdateTask(task) {
+export function callUpdateTask(task,token ) {
   return fetch(API_URL + '?id=eq.' + task.id, {
     method: 'PUT',
-    headers: { 'content-type': 'application/json' },
+    headers: { 'content-type': 'application/json',
+    Authorization: 'Bearer ' + token },
     body: JSON.stringify(task)
   })
 }
 
-export function callDeleteTask(taskId) {
-  return fetch(API_URL + '?id=eq.' + taskId, { method: 'DELETE' })
+export function callDeleteTask(taskId, token) {
+  return fetch(API_URL + '?id=eq.' + taskId, { method: 'DELETE',headers: { 'content-type': 'application/json',
+  Authorization: 'Bearer ' + token }, })
 }
 
 export function deleteCourse(courseId) {

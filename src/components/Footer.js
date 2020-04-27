@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FilterLink from '../containers/FilterLink'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
+import { useCookies } from 'react-cookie'
 
 const FILTER_TITLES = {
   [SHOW_ALL]: 'All',
@@ -12,6 +13,7 @@ const FILTER_TITLES = {
 const Footer = (props) => {
   const { activeCount, completedCount, onClearCompleted } = props
   const itemWord = activeCount === 1 ? 'item' : 'items'
+  const [cookies] = useCookies();
   return (
     <footer className="footer">
       <span className="todo-count">
@@ -30,7 +32,7 @@ const Footer = (props) => {
         !!completedCount &&
         <button
           className="clear-completed"
-          onClick={onClearCompleted}
+          onClick={() => { onClearCompleted(cookies.token) }}
         >Clear completed</button>
         
       }

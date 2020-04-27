@@ -25,7 +25,7 @@ export default function todos(state = initialState, action) {
       return state.map(todo => {
         if (todo.id === action.id) {
           const newTodo = { ...todo, text: action.text }
-          callUpdateTask(newTodo)
+          callUpdateTask(newTodo, action.cookie.cookies.token)
           return newTodo
         } else return todo
       })
@@ -34,7 +34,7 @@ export default function todos(state = initialState, action) {
       return state.map(todo => {
         if (todo.id === action.id) {
           const newTodo = { ...todo, completed: !todo.completed }
-          callUpdateTask(newTodo)
+          callUpdateTask(newTodo,action.token.cookies.token)
           return newTodo
         } else return todo
       })
@@ -52,7 +52,7 @@ export default function todos(state = initialState, action) {
 
     case CLEAR_COMPLETED:
       state.map(todo => {
-        if (todo.completed === true) callDeleteTask(todo.id)
+        if (todo.completed === true) callDeleteTask(todo.id, action.token)
       })
       return state.filter(todo => todo.completed === false)
 

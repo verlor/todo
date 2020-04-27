@@ -10,7 +10,7 @@ const TodoList = ({ cookies, filteredTodos, actions }) => {
   return (
     <ul className="todo-list">
       {filteredTodos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} {...actions} />
+        <TodoItem key={todo.id} cookies={cookies} todo={todo} {...actions} />
       ))}
     </ul>
   )
