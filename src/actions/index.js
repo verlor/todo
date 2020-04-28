@@ -6,7 +6,7 @@ export const addTodo = task => ({ type: types.ADD_TODO, task })
 export const deleteTodo = id => ({ type: types.DELETE_TODO, id })
 export const editTodo = (id, text, cookie) => ({ type: types.EDIT_TODO, id, text, cookie })
 export const completeTodo = (id, token) => ({ type: types.COMPLETE_TODO, id, token })
-export const completeAllTodos = () => ({ type: types.COMPLETE_ALL_TODOS })
+export const completeAllTodos = (cookie) => ({ type: types.COMPLETE_ALL_TODOS, cookie })
 export const clearCompleted = (token) => ({ type: types.CLEAR_COMPLETED , token})
 export const setVisibilityFilter = filter => ({
   type: types.SET_VISIBILITY_FILTER,

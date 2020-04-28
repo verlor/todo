@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 const Login = props => {
   const { cookies } = props
   const [formObj, setForm] = useState({})
+  const [notFound, setNotFound] = useState(false)
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -26,6 +27,9 @@ const Login = props => {
           return <Redirect to="/" />
         })
       }
+      else if(resp.status === 403){
+        setNotFound(true)
+      }
     })
   }
 
@@ -33,6 +37,7 @@ const Login = props => {
   return (
     <>
       <h1>Login</h1>
+      { notFound ? <h2>User not found</h2> : <></> }
       <form
         style={{ display: 'flex', justifyContent: 'center' }}
         onSubmit={handleSaveP}

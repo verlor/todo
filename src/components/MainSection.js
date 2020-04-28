@@ -14,7 +14,7 @@ const MainSection = ({ cookies, todosCount, completedCount, actions }) => {
             checked={completedCount === todosCount}
             readOnly
           />
-          <label onClick={actions.completeAllTodos} />
+          <label onClick={() => { actions.completeAllTodos(cookies) }} />
         </span>
       )}
       <VisibleTodoList cookies={cookies} />
